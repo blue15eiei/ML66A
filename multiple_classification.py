@@ -146,8 +146,19 @@ if(selected == 'Bmi'):
             float(person_Weight)
         ]])
         
-        # เก็บค่าตัวเลขที่ได้ลงในตัวแปรเพื่อแสดงผล
-        Bmi_prediction = f'ค่าสถานะที่ทำนายได้คือ: {prediction[0]}'
-        
-        # แสดงผลสำเร็จ
-        st.success(Bmi_prediction)
+        if (Bmi_prediction[0] == 0):
+
+          Bmi_prediction = 0: "Extremely Underweight (0)"
+
+        else:
+          Bmi_prediction = 1: "Underweight (1)"
+        else:
+          Bmi_prediction = 2: "Normal (2)"
+        else:
+          Bmi_prediction = 3: "Overweight (3)"
+        else:
+          Bmi_prediction = 4: "Obesity (4)"
+        else:
+          Bmi_prediction = 5: "Extreme Obesity (5)"
+    st.success(Bmi_prediction)
+
