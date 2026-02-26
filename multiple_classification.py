@@ -147,13 +147,10 @@ if(selected == 'Bmi'):
             ]
         ])
         
-        if (Bmi_prediction[0] == 0):
+       result_score = prediction[0]
             
-          Bmi_prediction = 'Not Accept'
-          
-        else:
-            
-          Bmi_prediction = 'Accept'
+            st.success(f'ค่าสถานะ BMI ของคุณคือ: {result_score}')
           
     st.success(Bmi_prediction)
+
 
