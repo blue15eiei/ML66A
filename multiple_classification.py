@@ -139,27 +139,16 @@ if(selected == 'Bmi'):
     Bmi_prediction = ''
     
     if st.button('Predict'):
-        # ทำการ Predict และดึงค่าตัวเลขออกมา (สมมติว่า model คืนค่า 0-5)
+        # ทำการ Predict และดึงค่าตัวเลขออกมาจาก model
         prediction = Bmi_model.predict([[
             gender_map[person_gender],
             float(person_Height),
             float(person_Weight)
         ]])
         
-        if (Bmi_prediction[0] == 0):
 
-          Bmi_prediction = 0 "Extremely Underweight (0)"
-
-        else:
-          Bmi_prediction = 1 "Underweight (1)"
-        else:
-          Bmi_prediction = 2 "Normal (2)"
-        else:
-          Bmi_prediction = 3 "Overweight (3)"
-        else:
-          Bmi_prediction = 4 "Obesity (4)"
-        else:
-          Bmi_prediction = 5 "Extreme Obesity (5)"
+        Bmi_prediction = f"ค่าสถานะ BMI คือ: {prediction[0]}"
+        
     st.success(Bmi_prediction)
 
 
