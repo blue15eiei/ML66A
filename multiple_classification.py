@@ -132,21 +132,27 @@ if(selected == 'Riding'):
 if(selected == 'Bmi'):
     st.title('Bmi Classification')
     
-    person_gender = st.selectbox('person_gender', list(gender_map.keys()))
+    person_Gender = st.selectbox('person_Gender', gender_map)
     person_Height = st.text_input('person_Height')
-    person_Weight = st.text_input('person_Weight')
+    person_income = st.text_input('person_Weight')
     
-    Bmi_prediction = ''
+    loan_prediction = ''
     
     if st.button('Predict'):
-        # แก้ไขจุดนี้: ตรวจสอบวงเล็บ [[ ]] ให้ครบถ้วน
-        prediction = Bmi_model.predict([[
-            gender_map[person_gender],
-            float(person_Height),
-            float(person_Weight)
-        ]])
+        Bmi_prediction = Bmi_model.predict([
+            [
+                gender_map[person_gender],
+                float(person_Height),
+                float(person_Weight)
+            ]
+        ])
         
-        # แสดงผลเป็นตัวเลข index 0 ถึง 5 โดยตรง
-        Bmi_prediction = str(prediction[0])
-        
+        if (Bmi_prediction[0] == 0):
+            
+          Bmi_prediction = 'Not Accept'
+          
+        else:
+            
+          Bmi_prediction = 'Accept'
+          
     st.success(Bmi_prediction)
