@@ -135,28 +135,19 @@ if(selected == 'Bmi'):
     person_gender = st.selectbox('person_gender', gender_map)
     person_Height = st.text_input('person_Height')
     person_Weight = st.text_input('person_Weight')
-   
-   
     
     Bmi_prediction = ''
     
     if st.button('Predict'):
-        Bmi_prediction = Bmi_model.predict([
-            [
-                gender_map[person_gender],
-                float(person_Height),
-                float(person_Weight),
-               
-            ]
-        ])
+        # ทำการ Predict และดึงค่าตัวเลขออกมา (สมมติว่า model คืนค่า 0-5)
+        prediction = Bmi_model.predict([[
+            gender_map[person_gender],
+            float(person_Height),
+            float(person_Weight)
+        ]])
         
-      if (Bmi_prediction[0] == 0):
-          Bmi_prediction = 'Not Accept'
-
-        else:
-
-          Bmi_prediction = 'Accept'
-
-          
-
-    st.success(Bmi_prediction)
+        # เก็บค่าตัวเลขที่ได้ลงในตัวแปรเพื่อแสดงผล
+        Bmi_prediction = f'ค่าสถานะที่ทำนายได้คือ: {prediction[0]}'
+        
+        # แสดงผลสำเร็จ
+        st.success(Bmi_prediction)
