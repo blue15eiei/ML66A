@@ -132,24 +132,26 @@ if(selected == 'Riding'):
 if(selected == 'Bmi'):
     st.title('Bmi Classification')
     
-    person_gender = st.selectbox('person_gender', gender_map)
+    # ดึงค่าจาก gender_map มาทำเป็น list ให้เลือกใน selectbox
+    person_gender = st.selectbox('person_gender', gender_map) 
     person_Height = st.text_input('person_Height')
     person_Weight = st.text_input('person_Weight')
     
     Bmi_prediction = ''
     
     if st.button('Predict'):
-        # ทำการ Predict และดึงค่าตัวเลขออกมาจาก model
+        # 1. รับค่าและ Predict (ใส่ค่าเข้า Model)
         prediction = Bmi_model.predict([[
             gender_map[person_gender],
             float(person_Height),
             float(person_Weight)
         ]])
         
-        # แทนที่ if/else เดิม ด้วยการดึงเลข index [0] มาแสดงผลตรงๆ
-        # ซึ่งจะเป็นเลข 0, 1, 2, 3, 4, หรือ 5 ตามที่ Model ส่งออกมา
-        Bmi_prediction = f"ค่าสถานะ BMI คือ: {prediction[0]}"
+        # 2. แก้ไขส่วนนี้: แทนที่จะเช็ค if/else เพื่อเปลี่ยนเป็นตัวหนังสือ 
+        # ให้เอาค่าตัวเลขจากผล Prediction มาใส่ในตัวแปร Bmi_prediction โดยตรง
+        result_index = int(prediction[0])
+        Bmi_prediction = f"BMI Status Level: {result_index}"
         
-    st.success(Bmi_prediction)
-
+        # แสดงผลลัพธ์ในกรอบ Success
+        st.success(Bmi_prediction)
 
