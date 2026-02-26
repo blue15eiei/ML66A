@@ -132,18 +132,18 @@ if(selected == 'Riding'):
 if(selected == 'Bmi'):
     st.title('Bmi Classification')
     
-    person_Gender = st.selectbox('person_Gender', gender_map)
-    person_Height = st.text_input('person_Height')
-    person_income = st.text_input('person_Weight')
+    person_Gender = st.selectbox('Gender', gender_map)
+    person_Height = st.text_input('Height')
+    person_income = st.text_input('Weight')
     
     loan_prediction = ''
     
     if st.button('Predict'):
         Bmi_prediction = Bmi_model.predict([
             [
-                gender_map[person_gender],
-                float(person_Height),
-                float(person_Weight)
+                gender_map[gender],
+                float(Height),
+                float(Weight)
             ]
         ])
         
@@ -156,3 +156,4 @@ if(selected == 'Bmi'):
           Bmi_prediction = 'Accept'
           
     st.success(Bmi_prediction)
+
