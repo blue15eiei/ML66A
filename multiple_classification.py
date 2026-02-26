@@ -147,10 +147,25 @@ if(selected == 'Bmi'):
             ]
         ])
         
-       result_score = prediction[0]
+       if (loan_prediction[0] == 0):
             
-            st.success(f'ค่าสถานะ BMI ของคุณคือ: {result_score}')
+          loan_prediction = 'Not Accept'
+        if (loan_prediction[1] == 1):
+            
+          loan_prediction = 'Not Accept'
+        if (loan_prediction[2] == 2):
+            
+          loan_prediction = 'Not Accept'
+        if (loan_prediction[3] == 3):
+            
+          loan_prediction = 'Not Accept'
+        if (loan_prediction[4] == 4):
+            
+          loan_prediction = 'Not Accept'
+        if (loan_prediction[5] == 5):
+            
+          loan_prediction = 'Not Accept'
           
-    st.success(Bmi_prediction)
+    st.success(loan_prediction)
 
 
