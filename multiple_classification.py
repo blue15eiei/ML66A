@@ -147,24 +147,13 @@ if(selected == 'Bmi'):
             ]
         ])
         
-       if (loan_prediction[0] == 0):
+        if (loan_prediction[0] == 0):
             
           loan_prediction = 'Not Accept'
-        if (loan_prediction[1] == 1):
+          
+        else:
             
-          loan_prediction = 'Not Accept'
-        if (loan_prediction[2] == 2):
-            
-          loan_prediction = 'Not Accept'
-        if (loan_prediction[3] == 3):
-            
-          loan_prediction = 'Not Accept'
-        if (loan_prediction[4] == 4):
-            
-          loan_prediction = 'Not Accept'
-        if (loan_prediction[5] == 5):
-            
-          loan_prediction = 'Not Accept'
+          loan_prediction = 'Accept'
           
     st.success(loan_prediction)
 
