@@ -132,7 +132,7 @@ if(selected == 'Riding'):
 if(selected == 'Bmi'):
     st.title('Bmi Classification')
     
-    person_age = st.text_input('person_Gender')
+    person_gender = st.selectbox('person_gender', gender_map)
     person_Height = st.text_input('person_Height')
     person_Weight = st.text_input('person_Weight')
    
@@ -143,33 +143,20 @@ if(selected == 'Bmi'):
     if st.button('Predict'):
         Bmi_prediction = Bmi_model.predict([
             [
-                float(person_Gender),
+                gender_map[person_gender],
                 float(person_Height),
                 float(person_Weight),
                
             ]
         ])
         
-       prediction = Bmi_model.predict([features])
-            result_value = int(prediction[0]) 
-            
-            status_map = {
-                0: "Extremely Underweight (0)",
-                1: "Underweight (1)",
-                2: "Normal (2)",
-                3: "Overweight (3)",
-                4: "Obesity (4)",
-                5: "Extreme Obesity (5)"
-            }
-            
-            status_desc = status_map.get(result_value, f"Unknown Status ({result_value})")
-            bmi_result_text = f"ผลการทำนาย: {status_desc}"
-            
-            st.success(bmi_result_text)
-            
-        except ValueError:
-            st.error("กรุณากรอกข้อมูลเป็นตัวเลขให้ครบถ้วน")
-        except Exception as e:
-            st.error(f"เกิดข้อผิดพลาด: {e}")
+      if (Bmi_prediction[0] == 0):
+          Bmi_prediction = 'Not Accept'
 
+        else:
 
+          Bmi_prediction = 'Accept'
+
+          
+
+    st.success(Bmi_prediction)
