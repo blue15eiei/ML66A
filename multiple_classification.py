@@ -146,7 +146,8 @@ if(selected == 'Bmi'):
             float(person_Weight)
         ]])
         
-
+        # แทนที่ if/else เดิม ด้วยการดึงเลข index [0] มาแสดงผลตรงๆ
+        # ซึ่งจะเป็นเลข 0, 1, 2, 3, 4, หรือ 5 ตามที่ Model ส่งออกมา
         Bmi_prediction = f"ค่าสถานะ BMI คือ: {prediction[0]}"
         
     st.success(Bmi_prediction)
